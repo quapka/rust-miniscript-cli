@@ -35,6 +35,7 @@ fn main() {
             Ok(pol) => pol,
             Err(error) => panic!("Error: {}", error),
         };
+        let minus_one = -1.0;
         if let Ok(desc) = pol.compile::<Legacy>() {
             // Lift
             // assert_eq!(desc.lift().unwrap().sorted(), pol.lift().unwrap().sorted());
@@ -43,7 +44,7 @@ fn main() {
             let output = desc.to_string();
             if let Ok(desc) = Script::from_str(&output) {
                 let _ = desc.to_string();
-                println!("{} {} {}", desc.script_size(), desc, pol);
+                println!("X {:17.10} {:5} {} {}", minus_one, desc.script_size(), desc, pol);
                 // assert_eq!(output.to_lowercase(), rtt.to_lowercase());
             } else {
                 panic!("compiler output something unparseable: {}", output)
